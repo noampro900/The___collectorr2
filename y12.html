@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the collectorr</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            display: none;
+        }
+        #imageContainer img.active {
+            display: block;
+        }
+        #promoButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            display: block; /* Button will be visible until all images are unlocked */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Enter Promo Code to Unlock Image</h1>
+    <input type="text" id="promoCode" placeholder="Enter promo code here">
+    <button onclick="unlockImage()">Submit</button>
+
+    <div id="imageContainer">
+        <img id="image1" src="https://noampro900.github.io/data5555555555/20240929_162026.jpg" alt="Image 1">
+        <img id="image2" src="https://noampro900.github.io/data5555555555/20240929_162024.jpg" alt="Image 2">
+        <img id="image3" src="https://noampro900.github.io/data5555555555/20240929_162021.jpg" alt="Image 3">
+        <img id="image4" src="https://noampro900.github.io/data5555555555/20240929_162018.jpg" alt="Image 4">
+    </div>
+
+    <!-- Promo Button -->
+    <button id="promoButton" onclick="redirect()">Picture promo code 5 shekel</button>
+
+    <script>
+        // Function to check localStorage and show unlocked images when page loads
+        window.onload = function() {
+            if (localStorage.getItem('image1Unlocked') === 'true') {
+                document.getElementById('image1').classList.add('active');
+            }
+            if (localStorage.getItem('image2Unlocked') === 'true') {
+                document.getElementById('image2').classList.add('active');
+            }
+            if (localStorage.getItem('image3Unlocked') === 'true') {
+                document.getElementById('image3').classList.add('active');
+            }
+            if (localStorage.getItem('image4Unlocked') === 'true') {
+                document.getElementById('image4').classList.add('active');
+            }
+            checkAllUnlocked(); // Check if all images are unlocked on page load
+        }
+
+        function unlockImage() {
+            var code = document.getElementById('promoCode').value.trim();
+
+            // Define promo codes for each image
+            var image1Codes = ['pakala4la', 'shikimiki22', 'jdidjd66', 'ejrkvkek'];
+            var image2Codes = ['55533', 'padioo828zn', 'jdjcoeodj', '8833554ducbid', 'fidjcccc'];
+            var image3Codes = ['788788bbsicj', '112233445566iiwwee', 'kkjjhhggffddddffggytrdjxi'];
+            var image4Codes = ['jjhdufjr', 'eofkcnf', 'difk83rn'];
+
+            // Clear all images first
+            document.querySelectorAll('img').forEach(function(img) {
+                img.classList.remove('active');
+            });
+
+            // Check which image to show based on the promo code and store in localStorage
+            if (image1Codes.includes(code)) {
+                document.getElementById('image1').classList.add('active');
+                localStorage.setItem('image1Unlocked', 'true');
+            } else if (image2Codes.includes(code)) {
+                document.getElementById('image2').classList.add('active');
+                localStorage.setItem('image2Unlocked', 'true');
+            } else if (image3Codes.includes(code)) {
+                document.getElementById('image3').classList.add('active');
+                localStorage.setItem('image3Unlocked', 'true');
+            } else if (image4Codes.includes(code)) {
+                document.getElementById('image4').classList.add('active');
+                localStorage.setItem('image4Unlocked', 'true');
+            } else {
+                alert("Invalid promo code");
+            }
+
+            checkAllUnlocked(); // Check if all images are unlocked after entering promo code
+        }
+
+        function checkAllUnlocked() {
+            // Check if all images are unlocked
+            if (localStorage.getItem('image1Unlocked') === 'true' &&
+                localStorage.getItem('image2Unlocked') === 'true' &&
+                localStorage.getItem('image3Unlocked') === 'true' &&
+                localStorage.getItem('image4Unlocked') === 'true') {
+                // Hide the promo button when all images are unlocked
+                document.getElementById('promoButton').style.display = 'none';
+            } else {
+                // Show the promo button if not all images are unlocked
+                document.getElementById('promoButton').style.display = 'block';
+            }
+        }
+
+        function redirect() {
+            // Redirect to another site when the button is clicked
+            window.location.href = "https://www.paypal.com/ncp/payment/J3KBCX56MG2CL"; // Change to your desired URL
+        }
+    </script>
+
+</body>
+</html>
